@@ -104,7 +104,7 @@ export default function SurveyPage() {
             {q['title']}<br/>{q['desc']}
             {q['qType']==='radio' && q['Options'].map((o, index)=>{
               return (
-                <div key={o['id']}>
+                <div key={index}>
                   <input type="radio" id={index} name={q['id']} value={o['title']} checked></input>
                   <label htmlFor={index}>{o['title']}</label>
                 </div>
@@ -112,13 +112,13 @@ export default function SurveyPage() {
             })}
             {q['qType']==='checkbox' && q['Options'].map((o, index)=>{
               return (
-                <div key={o['id']}>
+                <div key={index}>
                   <input type="checkbox" id={index} name={q['id']} value={o['title']} checked></input>
                   <label htmlFor={index}>{o['title']}</label>
                 </div>
               )
             })}
-            {q['qType']==='text' && (<div key={o['id']}><textarea name={q['id']}></textarea></div>)}
+            {q['qType']==='text' && (<div><textarea name={q['id']}></textarea></div>)}
           </div>
         )
       })
