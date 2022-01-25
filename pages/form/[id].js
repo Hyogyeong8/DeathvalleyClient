@@ -3,7 +3,7 @@ import {useState, useEffect} from 'react';
 import axios from 'axios';
 
 
-export default function surveyPage() {
+export default function SurveyPage() {
   const router = useRouter()
   const {id} = router.query
   const [form, setForm] = useState({
@@ -100,11 +100,11 @@ export default function surveyPage() {
     {question.length !== 0 && (
       question.map((q) => {
         return (
-          <div>
+          <div key={q['id']}>
             {q['title']}<br/>{q['desc']}
             {q['qType']==='radio' && q['Options'].map((o, index)=>{
               return (
-                <div>
+                <div key={o['id']}>
                   <input type="radio" id={index} name={q['id']} value={o['title']} checked></input>
                   <label for={index}>{o['title']}</label>
                 </div>
@@ -112,13 +112,13 @@ export default function surveyPage() {
             })}
             {q['qType']==='checkbox' && q['Options'].map((o, index)=>{
               return (
-                <div>
+                <div key={o['id']}>
                   <input type="checkbox" id={index} name={q['id']} value={o['title']} checked></input>
                   <label for={index}>{o['title']}</label>
                 </div>
               )
             })}
-            {q['qType']==='text' && (<div><textarea name={q['id']}></textarea></div>)}
+            {q['qType']==='text' && (<div key={o['id']}><textarea name={q['id']}></textarea></div>)}
           </div>
         )
       })

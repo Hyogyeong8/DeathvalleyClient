@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Router, { useRouter } from 'next/router';
 
-export default function survey() {
+export default function Survey() {
 
   const [forms, setForms] = useState([]);
 
@@ -26,7 +26,7 @@ export default function survey() {
     <div>
       {forms.map(form => {
         return (
-          <div onClick={() => movePage(form['id'])}>
+          <div key={form['id']} onClick={() => movePage(form['id'])}>
             {form['title']} 
             <br />
             {form['desc']}
