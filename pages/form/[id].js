@@ -106,7 +106,7 @@ export default function SurveyPage() {
               return (
                 <div key={o['id']}>
                   <input type="radio" id={index} name={q['id']} value={o['title']} checked></input>
-                  <label for={index}>{o['title']}</label>
+                  <label htmlFor={index}>{o['title']}</label>
                 </div>
               )
             })}
@@ -114,7 +114,7 @@ export default function SurveyPage() {
               return (
                 <div key={o['id']}>
                   <input type="checkbox" id={index} name={q['id']} value={o['title']} checked></input>
-                  <label for={index}>{o['title']}</label>
+                  <label htmlFor={index}>{o['title']}</label>
                 </div>
               )
             })}

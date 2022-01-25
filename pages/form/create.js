@@ -140,6 +140,7 @@ export default function Create() {
       <textarea value={form.desc} onChange={e=>updateFormDesc(e.target.value)} style = {{marginBottom: 20}}></textarea>
       {questions.map((question, index) => {
         return <Question 
+        key={index}
         question={question} 
         index={index} 
         updateQuestionTitle={updateQuestionTitle}
