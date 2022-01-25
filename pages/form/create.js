@@ -176,7 +176,7 @@ const Question = ({question, index, updateQuestionTitle, addOptionToQuestions, u
       <span>Options</span>
       {
         question.options.map((option, opIndex) => {
-          return <div>
+          return <div key={opIndex}>
             <textarea value= {option.title} onChange = {e => updateOption(index,opIndex,e.target.value)}/> 
             <button onClick = {e => deleteOption(index, opIndex)}>X</button>
             {/* {option.desc} */}
