@@ -123,7 +123,7 @@ export default function Create() {
   }
 
   const submit = () => {
-    axios.post("http://kimdiana.com/googleform/create", form)
+    axios.post("https://kimdiana.com/googleform/create", form)
     .then(function(response){
       console.log(response);
     }).catch(function(error){
