@@ -6,7 +6,7 @@ export default function Survey() {
 
   const [forms, setForms] = useState([]);
 
-  useEffect(() => axios.get("http://localhost:8000/googleform/getForms", {
+  useEffect(() => axios.get("http://kimdiana.com/googleform/getForms", {
 
   })
   .then(res => {

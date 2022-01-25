@@ -123,7 +123,7 @@ export default function Create() {
   }
 
   const submit = () => {
-    axios.post("http://localhost:8000/googleform/create", form)
+    axios.post("http://kimdiana.com/googleform/create", form)
     .then(function(response){
       console.log(response);
     }).catch(function(error){

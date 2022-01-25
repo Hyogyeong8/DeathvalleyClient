@@ -20,7 +20,7 @@ export default function SurveyPage() {
   }, [id]);
 
   const getQuestions = async () => {
-    await axios.get("http://localhost:8000/googleform/getQuestions", {
+    await axios.get("http://kimdiana.com/googleform/getQuestions", {
       params: {
         id: id
       }
@@ -37,7 +37,7 @@ export default function SurveyPage() {
     await readAnswer()
     if(answer.length !==0){
       console.log('answer: ', answer)
-      await axios.post("http://localhost:8000/googleform/answer", answer)
+      await axios.post("http://kimdiana.com/googleform/answer", answer)
       .then(function(response){
         console.log(response)
       }).catch(function(error){
@@ -50,7 +50,7 @@ export default function SurveyPage() {
   useEffect(async ()=>{
     if(answer.length !==0){
       console.log('answer: ', answer)
-      await axios.post("http://localhost:8000/googleform/answer", answer)
+      await axios.post("http://kimdiana.com/googleform/answer", answer)
       .then(function(response){
         console.log(response)
       }).catch(function(error){
