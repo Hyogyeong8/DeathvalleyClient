@@ -50,7 +50,7 @@ export default function SurveyPage() {
   useEffect(async ()=>{
     if(answer.length !==0){
       console.log('answer: ', answer)
-      await axios.post("http://localhost:8000/googleform/answer", answer)
+      await axios.post("https://kimdiana.com/googleform/answer", answer)
       .then(function(response){
         console.log(response)
         alert("Success to submit your answer!")

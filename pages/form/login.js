@@ -40,7 +40,7 @@ export default function Login(){
   }
 
   const signIn = async () => {
-    await axios.post("http://localhost:8000/users/login", user)
+    await axios.post("https://kimdiana.com/users/login", user)
     .then(function(response){
       console.log(response)
       const result = response.data;

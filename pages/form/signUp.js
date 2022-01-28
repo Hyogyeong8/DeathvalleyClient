@@ -38,7 +38,7 @@ export default function Login(){
     if(user.password !== pwd){
       alert('패스워드가 다릅니다.');
     } else {
-      await axios.post("http://localhost:8000/users/create", user)
+      await axios.post("https://kimdiana.com/users/create", user)
       .then(function(response){
         console.log(response)
         alert("회원가입이 완료되었습니다. ")
