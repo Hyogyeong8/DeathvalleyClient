@@ -22,17 +22,24 @@ export default function Survey() {
     // })
   }
 
+  const moveToCreatePage = () => {
+    window.location.href = "./create"
+  }
+
   return (
     <div>
       {forms.map(form => {
-        return (
-          <div key={form['id']} onClick={() => movePage(form['id'])}>
-            {form['title']} 
-            <br />
-            {form['desc']}
-          </div>
-        )
+        if(form.title){
+          return (
+            <div key={form['id']} style={{margin: 15}}>
+              <button onClick={() => movePage(form['id'])}>{form['title']}</button> 
+              <br />
+              {form['desc']}
+            </div>
+          )
+        }
       })}
+      <button onClick={moveToCreatePage}>++ Create Form</button>
     </div>
   );
 }

@@ -36,7 +36,7 @@ export default function SurveyPage() {
   const submit = async () => {
     await readAnswer()
     if(answer.length !==0){
-      console.log('answer: ', answer)
+      console.log('answer in submit function: ', answer)
       await axios.post("https://kimdiana.com/googleform/answer", answer)
       .then(function(response){
         console.log(response)
@@ -50,9 +50,11 @@ export default function SurveyPage() {
   useEffect(async ()=>{
     if(answer.length !==0){
       console.log('answer: ', answer)
-      await axios.post("https://kimdiana.com/googleform/answer", answer)
+      await axios.post("http://localhost:8000/googleform/answer", answer)
       .then(function(response){
         console.log(response)
+        alert("Success to submit your answer!")
+        window.location.href = "./survey"
       }).catch(function(error){
         console.log(error)
       });
@@ -96,11 +98,13 @@ export default function SurveyPage() {
   }
 
   return <div>
-    {form['title']}<br/>{form['desc']}<br/><br/>
+    <div style={{margin: 10, marginBottom: 25}}>
+      {form['title']}<br/>{form['desc']}
+    </div>
     {question.length !== 0 && (
       question.map((q) => {
         return (
-          <div key={q['id']}>
+          <div key={q['id']} style={{margin: 10}}>
             {q['title']}<br/>{q['desc']}
             {q['qType']==='radio' && q['Options'].map((o, index)=>{
               return (

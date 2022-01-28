@@ -126,6 +126,8 @@ export default function Create() {
     axios.post("https://kimdiana.com/googleform/create", form)
     .then(function(response){
       console.log(response);
+      alert("Success to create a form!")
+      window.location.href = "./survey"
     }).catch(function(error){
       console.log(error)
     });
