@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import Cookies from 'js-cookie';
 
 export default function Login(){
@@ -45,8 +45,10 @@ export default function Login(){
       console.log(response)
       const result = response.data;
       if(result.success){
-        cookies.set('jwtToken', result.token)
+        Cookies.set('jwtToken', result.token)
+        Cookies.set('user', user.firstName + " " + user.lastName)
         alert("login success!")
+        window.location.href = "./.."
       } else {
         alert(result.reason)
       }

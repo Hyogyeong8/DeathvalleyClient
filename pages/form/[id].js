@@ -1,6 +1,7 @@
 import {useRouter} from 'next/router';
 import {useState, useEffect} from 'react';
 import axios from 'axios';
+import Cookies from 'js-cookie';
 
 
 export default function SurveyPage() {
@@ -12,6 +13,27 @@ export default function SurveyPage() {
   })
   const [question, setQuestion] = useState([]);
   const [answer, setAnswer] = useState([]);
+
+  const valid = async () => {
+    const accessToken = Cookies.get('jwtToken')
+    await axios.post("http://localhost:8000/users/valid", {
+      headers: {
+        'Authorization': `Bearer ${accessToken}`
+      }
+    }).then(function(res){
+      console.log(res)
+      if(!res.data.success){
+        alert("로그인을 해야합니다")
+        window.location.href = "./login"
+      }
+    }).catch(function(error){
+      console.log(error)
+    });
+  }
+
+  useEffect(() => {
+    valid();
+  }, [])
 
   useEffect(() => {
     if (id){
@@ -35,16 +57,16 @@ export default function SurveyPage() {
 
   const submit = async () => {
     await readAnswer()
-    if(answer.length !==0){
-      console.log('answer in submit function: ', answer)
-      await axios.post("https://kimdiana.com/googleform/answer", answer)
-      .then(function(response){
-        console.log(response)
-      }).catch(function(error){
-        console.log(error)
-      });
-    }
-    else console.log('length is 0')
+    // if(answer.length !==0){
+    //   console.log('answer in submit function: ', answer)
+    //   await axios.post("https://kimdiana.com/googleform/answer", answer)
+    //   .then(function(response){
+    //     console.log(response)
+    //   }).catch(function(error){
+    //     console.log(error)
+    //   });
+    // }
+    // else console.log('length is 0')
   }
 
   useEffect(async ()=>{

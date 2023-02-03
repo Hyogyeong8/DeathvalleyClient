@@ -1,5 +1,6 @@
 import axios from 'axios';
 import {useState} from 'react'
+import Cookies from 'js-cookie';
 
 export default function Create() {
   const [btnState, setBtnState] = useState(false);
@@ -8,6 +9,27 @@ export default function Create() {
     // setBtnState(prev => !prev)
     setBtnState(!btnState)
   }
+
+  const valid = async () => {
+    const accessToken = Cookies.get('jwtToken')
+    await axios.post("http://localhost:8000/users/valid", {
+      headers: {
+        'Authorization': `Bearer ${accessToken}`
+      }
+    }).then(function(res){
+      console.log(res)
+      if(!res.data.success){
+        alert("로그인을 해야합니다")
+        window.location.href = "./login"
+      }
+    }).catch(function(error){
+      console.log(error)
+    });
+  }
+
+  useEffect(() => {
+    valid();
+  }, [])
 
   const updateFormTitle = (text)=>{
     const cp = {...form}
